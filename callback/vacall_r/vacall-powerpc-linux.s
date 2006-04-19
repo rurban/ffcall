@@ -1,4 +1,4 @@
-	.file	"vacall-powerpc.c"
+	.file	"vacall-rs6000.c"
 gcc2_compiled.:
 	.section	".text"
 	.align 2
