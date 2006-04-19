@@ -2,9 +2,9 @@
 gcc2_compiled.:
 	.section	".text"
 	.align 2
-	.globl __vacall
-	.type	 __vacall,@function
-__vacall:
+	.globl __vacall_r
+	.type	 __vacall_r,@function
+__vacall_r:
 	.extern __mulh
 	.extern __mull
 	.extern __divss
@@ -13,30 +13,31 @@ __vacall:
 	.extern __quous
 	stwu 1,-176(1)
 	mflr 0
+	stw 27,156(1)
 	stw 28,160(1)
 	stw 29,164(1)
 	stw 30,168(1)
 	stw 31,172(1)
 	stw 0,180(1)
-	lis 11,vacall_function@ha
 	addi 29,1,184
-	lwz 12,vacall_function@l(11)
+	lwz 12,0(11)
 	stw 3,-32(29)
-	stw 9,-8(29)
+	stw 4,-28(29)
 	mtlr 12
+	lwz 3,4(11)
+	addi 4,1,8
+	stw 9,-8(29)
 	stw 10,-4(29)
 	stw 5,-24(29)
 	stw 6,-20(29)
 	stw 7,-16(29)
 	stw 8,-12(29)
 	li 0,0
-	addi 11,1,152
-	addi 28,1,48
-	addi 3,1,8
-	stw 11,12(1)
+	addi 28,1,152
+	addi 27,1,48
+	stw 28,12(1)
 	stw 0,20(1)
-	stw 28,40(1)
-	stw 4,-28(29)
+	stw 27,40(1)
 	stfd 1,48(1)
 	stfd 2,56(1)
 	stfd 3,64(1)
@@ -145,6 +146,7 @@ __vacall:
 .L4:
 	lwz 0,180(1)
 	mtlr 0
+	lwz 27,156(1)
 	lwz 28,160(1)
 	lwz 29,164(1)
 	lwz 30,168(1)
@@ -152,5 +154,5 @@ __vacall:
 	la 1,176(1)
 	blr
 .Lfe1:
-	.size	 __vacall,.Lfe1-__vacall
+	.size	 __vacall_r,.Lfe1-__vacall_r
 	.ident	"GCC: (GNU) 2.95.2 19991024 (release)"

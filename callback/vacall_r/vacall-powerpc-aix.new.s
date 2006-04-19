@@ -3,19 +3,14 @@
 .csect .text[PR]
 gcc2_compiled.:
 __gnu_compiled_c:
-	.extern vacall_function[RW]
-.toc
-LC..0:
-	.tc vacall_function[TC],vacall_function[RW]
-.csect .text[PR]
 	.align 2
-	.globl __vacall
-	.globl .__vacall
-.csect __vacall[DS]
-__vacall:
-	.long .__vacall, TOC[tc0], 0
+	.globl __vacall_r
+	.globl .__vacall_r
+.csect __vacall_r[DS]
+__vacall_r:
+	.long .__vacall_r, TOC[tc0], 0
 .csect .text[PR]
-.__vacall:
+.__vacall_r:
 	.extern __mulh
 	.extern __mull
 	.extern __divss
@@ -30,23 +25,21 @@ __vacall:
 	stw 31,-4(1)
 	stw 0,8(1)
 	stwu 1,-224(1)
-	lwz 29,LC..0(2)
-	addi 11,1,280
-	lwz 27,0(29)
-	stw 3,-32(11)
-	stw 9,-8(11)
-	stw 10,-4(11)
-	stw 5,-24(11)
-	stw 6,-20(11)
-	stw 7,-16(11)
-	stw 8,-12(11)
+	addi 29,1,280
+	stw 10,-4(29)
+	stw 5,-24(29)
+	stw 6,-20(29)
+	stw 7,-16(29)
+	stw 8,-12(29)
+	stw 9,-8(29)
 	li 0,0
-	addi 29,1,248
-	addi 28,1,92
-	stw 29,60(1)
+	addi 28,1,248
+	addi 27,1,92
+	stw 28,60(1)
 	stw 0,68(1)
-	stw 28,88(1)
-	stw 4,-28(11)
+	stw 27,88(1)
+	stw 4,-28(29)
+	stw 3,-32(29)
 	stfd 1,92(1)
 	stfd 2,100(1)
 	stfd 3,108(1)
@@ -62,12 +55,14 @@ __vacall:
 	stfd 13,188(1)
 	stw 0,56(1)
 	stw 0,64(1)
-	addi 3,1,56
+	lwz 9,0(11)
+	lwz 3,4(11)
+	addi 4,1,56
 	stw 2,20(1)
-	lwz 0,0(27)
-	lwz 2,4(27)
+	lwz 0,0(9)
+	lwz 2,4(9)
 	mtlr 0
-	lwz 11,8(27)
+	lwz 11,8(9)
 	blrl
 	lwz 2,20(1)
 	lwz 9,68(1)
@@ -174,13 +169,13 @@ L..4:
 	lwz 30,-8(1)
 	lwz 31,-4(1)
 	blr
-LT..__vacall:
+LT..__vacall_r:
 	.long 0
 	.byte 0,0,32,65,128,5,8,0
 	.long 0
-	.long LT..__vacall-.__vacall
-	.short 8
-	.byte "__vacall"
+	.long LT..__vacall_r-.__vacall_r
+	.short 10
+	.byte "__vacall_r"
 _section_.text:
 .csect .data[RW],3
 	.long _section_.text
