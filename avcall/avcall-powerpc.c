@@ -1,8 +1,8 @@
-#ifndef _avcall_rs6000_c				/*-*- C -*-*/
-#define _avcall_rs6000_c
+#ifndef _avcall_powerpc_c				/*-*- C -*-*/
+#define _avcall_powerpc_c
 /**
   Copyright 1993 Bill Triggs, <Bill.Triggs@inrialpes.fr>
-  Copyright 1995-1999 Bruno Haible, <bruno@clisp.org>
+  Copyright 1995-2006 Bruno Haible, <bruno@clisp.org>
   Copyright 2000 Adam Fedor, <fedor@gnu.org>
   Copyright 2004 Paul Guyot, <pguyot@kallisys.net>
 
@@ -214,4 +214,4 @@ __builtin_avcall(av_alist* l)
   return 0;
 }
 
-#endif /*_avcall_rs6000_c */
+#endif /*_avcall_powerpc_c */
