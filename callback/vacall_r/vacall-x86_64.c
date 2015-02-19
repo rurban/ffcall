@@ -10,8 +10,8 @@
  */
 
 #ifndef REENTRANT
-#include "vacall.h.in"
-#else /* REENTRANT */
+#include "vacall.h"
+#else 
 #include "vacall_r.h.in"
 #endif
 
