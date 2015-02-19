@@ -30,6 +30,9 @@ register void* env __asm__("r15");
 #ifdef __x86_64__
 register void* env __asm__("r10");
 #endif
+#ifdef _WIN64
+register void* env __asm__("r10");
+#endif
 
 int tramp ()
 { env = data;

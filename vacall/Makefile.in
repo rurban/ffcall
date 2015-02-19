@@ -137,6 +137,9 @@ vacall-ia64.o : $(srcdir)/vacall-ia64.s
 vacall-x86_64.o : $(srcdir)/vacall-x86_64.s
 	$(CC) @GCC_X_NONE@ -c $(srcdir)/vacall-x86_64.s
 
+vacall-win64.o : $(srcdir)/vacall-win64.s
+	$(CC) @GCC_X_NONE@ -c $(srcdir)/vacall-win64.s
+
 misc.o : $(srcdir)/misc.c vacall.h config.h
 	$(CC) $(CFLAGS) $(INCLUDES) -c $(srcdir)/misc.c
 

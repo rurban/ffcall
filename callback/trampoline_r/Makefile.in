@@ -85,6 +85,12 @@ tramp-powerpc64.s : $(srcdir)/tramp-powerpc64.new.S
 tramp-ia64.lo : $(srcdir)/tramp-ia64.s
 	$(LIBTOOL_COMPILE) $(CC) @GCC_X_NONE@ -c $(srcdir)/tramp-ia64.s
 
+tramp-x86_64.lo : $(srcdir)/tramp-x86_64.s
+	$(LIBTOOL_COMPILE) $(CC) @GCC_X_NONE@ -c $(srcdir)/tramp-x86_64.s
+
+tramp-win64.lo : $(srcdir)/tramp-win64.s
+	$(LIBTOOL_COMPILE) $(CC) @GCC_X_NONE@ -c $(srcdir)/tramp-win64.s
+
 cache-sparc.lo : cache-sparc.s
 	$(LIBTOOL_COMPILE) $(CC) @GCC_X_NONE@ -c cache-sparc.s
 
