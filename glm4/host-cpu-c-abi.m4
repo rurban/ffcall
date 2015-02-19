@@ -32,6 +32,7 @@ dnl   the instruction sets of 'mipsn32' and 'mips64' are the same.
 dnl * 'arm' and 'armel' are different canonical names, because they use
 dnl   different memory ordering for the C types like 'int', and although
 dnl   the instruction sets of 'arm' and 'armel' are the same.
+dnl * win64 is seperate from x86_64, and also used for cygwin64
 dnl * The same name 'i386' is used for CPUs of type i386, i486, i586
 dnl   (Pentium), AMD K7, Pentium II, Pentium IV, etc., because
 dnl   - Instructions that do not exist on all of these CPUs (cmpxchg,
@@ -64,6 +65,12 @@ changequote([,])dnl
             #endif],
            [gl_cv_host_cpu_c_abi=x86_64],
            [gl_cv_host_cpu_c_abi=i386])
+         # We also need to check for the seperate win64 ABI
+         AC_EGREP_CPP([yes],
+           [#if defined(__LP64__) && (defined(__CYGWIN__) || defined(_WIN64))
+            yes
+            #endif],
+           [gl_cv_host_cpu_c_abi=win64])
          ;;
 
 changequote(,)dnl
